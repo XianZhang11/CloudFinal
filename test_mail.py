@@ -19,7 +19,7 @@ if MAIL_USE_TLS:
 mail_handler = SMTPHandler(
     mailhost=(MAIL_SERVER, MAIL_PORT),
     fromaddr='no-reply@' + MAIL_SERVER,
-    toaddrs=["gdelozie@kent.edu"], subject='Example Log Entry',
+    toaddrs=["xzhang35@kent.edu"], subject='Example Log Entry',
     credentials=auth, secure=secure)
 mail_handler.setLevel(logging.ERROR)
 
@@ -31,5 +31,3 @@ logger.addHandler(mail_handler)
 logger.addHandler(stream_handler)
 
 logger.error("This is a sample error")
-
-import 
