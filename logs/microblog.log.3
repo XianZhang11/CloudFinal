@@ -1,4 +1,10 @@
-2018-05-09 14:55:21,798 ERROR: Exception on /translate [POST] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
+2018-05-09 14:34:35,487 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 14:34:46,196 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 14:34:58,247 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 14:35:10,220 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 14:52:36,087 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 14:52:47,305 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 14:55:14,096 ERROR: Exception on /translate [POST] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/contrib/pyopenssl.py", line 441, in wrap_socket
     cnx.do_handshake()
@@ -36,7 +42,7 @@ Traceback (most recent call last):
     _stacktrace=sys.exc_info()[2])
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/util/retry.py", line 388, in increment
     raise MaxRetryError(_pool, url, error or ResponseError(cause))
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.microsofttranslator.com', port=443): Max retries exceeded with url: /v2/Ajax.svc/Translate?text=Gesunheit,%20herr%20doctor&from=de&to=en (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.microsofttranslator.com', port=443): Max retries exceeded with url: /v2/Ajax.svc/Translate?text=Este%20es%20probablemente%20el%20mas%20loco%20idea%20en%20el%20mundo.%20%0A&from=es&to=en (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),))
 
 During handling of the above exception, another exception occurred:
 
@@ -69,4 +75,4 @@ Traceback (most recent call last):
     r = adapter.send(request, **kwargs)
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/requests/adapters.py", line 506, in send
     raise SSLError(e, request=request)
-requests.exceptions.SSLError: HTTPSConnectionPool(host='api.microsofttranslator.com', port=443): Max retries exceeded with url: /v2/Ajax.svc/Translate?text=Gesunheit,%20herr%20doctor&from=de&to=en (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),))
+requests.exceptions.SSLError: HTTPSConnectionPool(host='api.microsofttranslator.com', port=443): Max retries exceeded with url: /v2/Ajax.svc/Translate?text=Este%20es%20probablemente%20el%20mas%20loco%20idea%20en%20el%20mundo.%20%0A&from=es&to=en (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),))
