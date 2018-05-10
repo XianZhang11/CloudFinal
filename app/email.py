@@ -26,3 +26,11 @@ def send_password_reset_email(user):
                                          user=user, token=token),
                html_body=render_template('email/reset_password.html',
                                          user=user, token=token))
+
+def send_post_email(user,post,date,author):
+    send_email(_('[Microblog] Post Copy'),
+               sender=app.config['ADMINS'][0],
+               recipients=[user.email],
+               text_body=render_template('email/post_email.txt',
+                                         user=user, author=author, time=date,post=post),
+                html_body="")                         

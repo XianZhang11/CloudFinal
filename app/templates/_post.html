@@ -18,6 +18,7 @@
                 <br>
                 <span>{{post.language}}</span> 
                 <br>
+                <a href="{{ url_for('sendpost', author=post.author.username, post=post.body, time=post.timestamp)}}">Send me a copy</a>
                 {% if post.language and post.language != g.locale %}
                 <br><br>
                 <span id="translation{{ post.id }}">

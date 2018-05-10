@@ -9,6 +9,7 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
     ResetPasswordRequestForm, ResetPasswordForm
 from app.models import User, Post
 from app.email import send_password_reset_email
+from app.email import send_post_email
 from app.translate import translate
 from guess_language import guess_language
 
@@ -156,12 +157,14 @@ def edit_profile():
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
+        #current_user.zipcode = form.zipcode.data
         db.session.commit()
         flash(_('Your changes have been saved.'))
         return redirect(url_for('edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
+        #form.zipcode.data = current_user.zipcode
     return render_template('edit_profile.html', title=_('Edit Profile'),
                            form=form)
 
@@ -203,3 +206,13 @@ def translate_text():
     return jsonify({'text': translate(request.form['text'],
                                       request.form['source_language'],
                                       request.form['dest_language'])})
+
+@app.route('/sendpost', methods=['GET'])
+@login_required
+def sendpost():
+    time=request.args.get("time")
+    author=request.args.get("author")
+    post=request.args.get("post")
+    send_post_email(user=current_user, post=post,date=time,author=author)
+    flash(_('The post has been sent to your email.'))
+    return redirect(url_for('index'))

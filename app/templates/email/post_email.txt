@@ -1,0 +1,15 @@
+Dear {{ user.username }},
+
+There is a post from Microblog:
+
+Author: {{author}}
+
+Time: {{time}}
+
+Content:
+
+{{ post }}
+
+Sincerely,
+
+The Microblog Team
