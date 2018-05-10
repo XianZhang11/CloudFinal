@@ -18,6 +18,10 @@
                 {% else %}
                 <p><a href="{{ url_for('unfollow', username=user.username) }}">{{ _('Unfollow') }}</a></p>
                 {% endif %}
+                {% if user.zipcode %}
+                <p>{{user.zipcode}}   {{user.weather}} </p>
+                <p>Last update on {{user.updateTime}}</p>
+                {% endif %}
             </td>
         </tr>
     </table>

@@ -22,6 +22,8 @@ class User(UserMixin, db.Model):
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     about_me = db.Column(db.String(140))
     zipcode = db.Column(db.String(10))
+    weather = db.Column(db.String(100))
+    updateTime = db.Column(db.DateTime)
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     followed = db.relationship(
         'User', secondary=followers,

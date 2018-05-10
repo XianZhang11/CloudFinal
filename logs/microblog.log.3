@@ -1,4 +1,4 @@
-2018-05-09 20:25:02,291 ERROR: Exception on /edit_profile [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
+2018-05-09 22:06:10,016 ERROR: Exception on /test [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,25 +12,12 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/xian/development/cloudApplications/CloudFinal/app/routes.py", line 167, in edit_profile
-    form.zipcode.data = current_user.zipcode
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-AttributeError: 'User' object has no attribute 'zipcode'
-2018-05-09 20:34:59,572 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:35:47,629 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:35:54,699 ERROR: Exception on /index [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such column: user.zipcode
-
-The above exception was the direct cause of the following exception:
-
+  File "/Users/xian/development/cloudApplications/CloudFinal/app/routes.py", line 227, in getWeather
+    s = json.loads(r.content.decode('utf-8-sig'))
+NameError: name 'json' is not defined
+2018-05-09 22:06:29,297 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:07:29,646 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:07:34,544 ERROR: Exception on /test [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -40,63 +27,73 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/_compat.py", line 33, in reraise
     raise value
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1610, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1831, in preprocess_request
-    rv = func()
-  File "/Users/xian/development/cloudApplications/CloudFinal/app/routes.py", line 19, in before_request
-    if current_user.is_authenticated:
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/local.py", line 306, in _get_current_object
-    return self.__local()
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 335, in _get_user
-    current_app.login_manager._load_user()
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/login_manager.py", line 359, in _load_user
-    return self.reload_user()
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
-    user = self.user_callback(user_id)
-  File "/Users/xian/development/cloudApplications/CloudFinal/app/models.py", line 82, in load_user
-    return User.query.get(int(id))
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 882, in get
-    ident, loading.load_on_pk_identity)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 952, in _get_impl
-    return db_load_fn(self, primary_key_identity)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 247, in load_on_pk_identity
-    return q.one()
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2884, in one
-    ret = self.one_or_none()
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2854, in one_or_none
-    ret = list(self)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2925, in __iter__
-    return self._execute_and_instances(context)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2948, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 203, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 186, in reraise
-    raise value.with_traceback(tb)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user.zipcode [SQL: 'SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.zipcode AS user_zipcode, user.last_seen AS user_last_seen \nFROM user \nWHERE user.id = ?'] [parameters: (5,)] (Background on this error at: http://sqlalche.me/e/e3q8)
-2018-05-09 20:37:56,386 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:51:38,522 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:52:10,782 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:53:48,599 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:57:12,090 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:57:38,742 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:58:14,697 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/xian/development/cloudApplications/CloudFinal/app/routes.py", line 230, in getWeather
+    temp = s["main"][0]["temp"]
+KeyError: 0
+2018-05-09 22:08:41,592 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:08:53,252 ERROR: Exception on /test [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1740, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/wrappers.py", line 921, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/wrappers.py", line 59, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/test.py", line 923, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: 'float' object is not callable
+2018-05-09 22:08:54,661 ERROR: Exception on /test [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1740, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/wrappers.py", line 921, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/test.py", line 923, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: 'float' object is not callable
+2018-05-09 22:08:56,093 ERROR: Exception on /test [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1615, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1630, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1740, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/wrappers.py", line 921, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/test.py", line 923, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: 'float' object is not callable
+2018-05-09 22:09:46,373 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:10:59,834 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:23:23,041 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:32:47,396 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:33:10,228 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:42:15,088 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:42:32,346 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:42:44,464 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:42:55,394 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:46:08,045 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:48:44,298 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:49:45,993 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:49:58,643 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:50:54,677 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:56:14,963 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]

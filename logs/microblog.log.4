@@ -1,4 +1,45 @@
-2018-05-09 17:52:53,128 ERROR: Exception on /sendpost [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
+2018-05-09 21:08:53,889 ERROR: Exception on /translate [POST] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
+Traceback (most recent call last):
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/contrib/pyopenssl.py", line 441, in wrap_socket
+    cnx.do_handshake()
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/OpenSSL/SSL.py", line 1806, in do_handshake
+    self._raise_ssl_error(self._ssl, result)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/OpenSSL/SSL.py", line 1546, in _raise_ssl_error
+    _raise_current_error()
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/OpenSSL/_util.py", line 54, in exception_from_error_queue
+    raise exception_type(errors)
+OpenSSL.SSL.Error: [('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/connectionpool.py", line 346, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/connectionpool.py", line 850, in _validate_conn
+    conn.connect()
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/connection.py", line 326, in connect
+    ssl_context=context)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/util/ssl_.py", line 329, in ssl_wrap_socket
+    return context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/contrib/pyopenssl.py", line 448, in wrap_socket
+    raise ssl.SSLError('bad handshake: %r' % e)
+ssl.SSLError: ("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/requests/adapters.py", line 440, in send
+    timeout=timeout
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/util/retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.microsofttranslator.com', port=443): Max retries exceeded with url: /v2/Ajax.svc/Translate?text=%E4%B8%AD%E5%9B%BD&from=zh&to=en (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),))
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,11 +55,25 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/xian/development/cloudApplications/CloudFinal/app/routes.py", line 214, in sendpost
-    send_post_email(user=current_user, post=post,date=time,author=author)
-NameError: name 'time' is not defined
-2018-05-09 17:53:31,162 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 17:53:37,605 ERROR: Exception on /sendpost [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
+  File "/Users/xian/development/cloudApplications/CloudFinal/app/routes.py", line 208, in translate_text
+    request.form['dest_language'])})
+  File "/Users/xian/development/cloudApplications/CloudFinal/app/translate.py", line 14, in translate
+    headers=auth)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/requests/api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/requests/api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/requests/sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/requests/sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/requests/adapters.py", line 506, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='api.microsofttranslator.com', port=443): Max retries exceeded with url: /v2/Ajax.svc/Translate?text=%E4%B8%AD%E5%9B%BD&from=zh&to=en (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),))
+2018-05-09 21:34:42,172 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 21:48:31,647 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:05:09,613 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+2018-05-09 22:05:24,298 ERROR: Exception on /test [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -32,15 +87,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/xian/development/cloudApplications/CloudFinal/app/routes.py", line 214, in sendpost
-    send_post_email(user=current_user, post=post,date=time,author=author)
-  File "/Users/xian/development/cloudApplications/CloudFinal/app/email.py", line 35, in send_post_email
-    user=user, token=token),
-NameError: name 'token' is not defined
-2018-05-09 17:55:12,169 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 17:55:15,734 ERROR: Exception on /sendpost [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
+TypeError: getWeather() missing 1 required positional argument: 'zipcode'
+2018-05-09 22:05:56,513 ERROR: Exception on /test [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -54,46 +102,5 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/xian/development/cloudApplications/CloudFinal/app/routes.py", line 214, in sendpost
-    send_post_email(user=current_user, post=post,date=time,author=author)
-  File "/Users/xian/development/cloudApplications/CloudFinal/app/email.py", line 35, in send_post_email
-    user=user, author=author, time=date,post=post),
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/templating.py", line 133, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/jinja2/loaders.py", line 113, in load
-    source, filename, uptodate = self.get_source(environment, name)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/templating.py", line 57, in get_source
-    return self._get_source_fast(environment, template)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/templating.py", line 85, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: email/post-email.txt
-2018-05-09 17:55:48,319 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 17:56:47,961 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:05:17,003 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:05:32,114 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:06:35,796 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:08:23,674 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:12:44,033 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:12:50,636 ERROR: Exception on /sendpost [GET] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
-Traceback (most recent call last):
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1615, in full_dispatch_request
-    return self.finalize_request(rv)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1630, in finalize_request
-    response = self.make_response(rv)
-  File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py", line 1725, in make_response
-    raise ValueError('View function did not return a response')
-ValueError: View function did not return a response
-2018-05-09 20:14:49,641 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:16:09,013 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:16:43,175 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
-2018-05-09 20:24:53,055 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+TypeError: getWeather() missing 1 required positional argument: 'zipcode'
+2018-05-09 22:06:08,082 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]

@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime,timedelta
 from flask import render_template, flash, redirect, url_for, request, g
 from flask import jsonify
 from flask_login import login_user, logout_user, current_user, login_required
@@ -12,6 +12,7 @@ from app.email import send_password_reset_email
 from app.email import send_post_email
 from app.translate import translate
 from guess_language import guess_language
+from app.weather import getWeather
 
 
 @app.before_request
@@ -139,6 +140,7 @@ def reset_password(token):
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
+    updateWeather(user)
     page = request.args.get('page', 1, type=int)
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
         page, app.config['POSTS_PER_PAGE'], False)
@@ -158,6 +160,9 @@ def edit_profile():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
         current_user.zipcode = form.zipcode.data
+        if current_user.zipcode:
+            current_user.weather = getWeather(current_user.zipcode)
+            current_user.updateTime = datetime.now()
         db.session.commit()
         flash(_('Your changes have been saved.'))
         return redirect(url_for('edit_profile'))
@@ -207,6 +212,13 @@ def translate_text():
                                       request.form['source_language'],
                                       request.form['dest_language'])})
 
+@app.route('/weather', methods=['GET'])
+@login_required
+def get_weather():
+    zipcode=request.args.get("zipcode")
+    return getWeather(zipcode)
+
+
 @app.route('/sendpost', methods=['GET'])
 @login_required
 def sendpost():
@@ -216,3 +228,14 @@ def sendpost():
     send_post_email(user=current_user, post=post,date=time,author=author)
     flash(_('The post has been sent to your email.'))
     return redirect(url_for('index'))
+
+
+
+def updateWeather(user):
+    if user.zipcode: 
+        updateTime = user.updateTime
+        delta = datetime.now() - updateTime
+        if delta > timedelta(minutes = 15):
+            user.weather = getWeather(user.zipcode)
+            user.updateTime = datetime.now()
+        

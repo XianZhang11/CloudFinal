@@ -16,3 +16,4 @@ class Config(object):
     LANGUAGES = ['en', 'es', 'zh']
     POSTS_PER_PAGE = 5
     MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
+    WEATHER_KEY = "05d9b0402f0ee1732ef71262e6467299"
