@@ -1,4 +1,4 @@
-2018-05-09 21:07:53,325 ERROR: Exception on /translate [POST] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
+2018-05-09 14:55:19,133 ERROR: Exception on /translate [POST] [in /usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/contrib/pyopenssl.py", line 441, in wrap_socket
     cnx.do_handshake()
@@ -36,7 +36,7 @@ Traceback (most recent call last):
     _stacktrace=sys.exc_info()[2])
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/urllib3/util/retry.py", line 388, in increment
     raise MaxRetryError(_pool, url, error or ResponseError(cause))
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.microsofttranslator.com', port=443): Max retries exceeded with url: /v2/Ajax.svc/Translate?text=%E4%B8%AD%E5%9B%BD&from=zh&to=en (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.microsofttranslator.com', port=443): Max retries exceeded with url: /v2/Ajax.svc/Translate?text=Bonjour,%20la%20revolucion!%0A&from=fr&to=en (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),))
 
 During handling of the above exception, another exception occurred:
 
@@ -55,7 +55,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/xian/development/cloudApplications/CloudFinal/app/routes.py", line 208, in translate_text
+  File "/Users/xian/development/cloudApplications/CloudFinal/app/routes.py", line 205, in translate_text
     request.form['dest_language'])})
   File "/Users/xian/development/cloudApplications/CloudFinal/app/translate.py", line 14, in translate
     headers=auth)
@@ -69,5 +69,4 @@ Traceback (most recent call last):
     r = adapter.send(request, **kwargs)
   File "/usr/local/Cellar/python3/3.6.4_2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/requests/adapters.py", line 506, in send
     raise SSLError(e, request=request)
-requests.exceptions.SSLError: HTTPSConnectionPool(host='api.microsofttranslator.com', port=443): Max retries exceeded with url: /v2/Ajax.svc/Translate?text=%E4%B8%AD%E5%9B%BD&from=zh&to=en (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),))
-2018-05-09 21:08:48,618 INFO: Microblog startup [in /Users/xian/development/cloudApplications/CloudFinal/app/__init__.py:52]
+requests.exceptions.SSLError: HTTPSConnectionPool(host='api.microsofttranslator.com', port=443): Max retries exceeded with url: /v2/Ajax.svc/Translate?text=Bonjour,%20la%20revolucion!%0A&from=fr&to=en (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),))
